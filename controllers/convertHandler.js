@@ -90,7 +90,7 @@ function ConvertHandler() {
       case 'gal':
         result=initNum*galToL;
         break;
-      case 'L':
+      case 'l':
         result=initNum/galToL;
         break;
       case 'km':
@@ -104,7 +104,7 @@ function ConvertHandler() {
     }
 
     
-    return result;
+    return result.toFixed(5);
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
