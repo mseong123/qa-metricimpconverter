@@ -3,6 +3,7 @@ function ConvertHandler() {
   this.getNum = function(input) {
     let result;
     if (Array.isArray(input.match(/\d+[+-/*]*/g))) {
+      console.log(input.match(/\d+[+-/*]*/g).join(''))
       result=eval(input.match(/\d+[+-/*]*/g).join(''))
     }
     
@@ -12,19 +13,28 @@ function ConvertHandler() {
   this.getUnit = function(input) {
     let result
     if (Array.isArray(input.match(/[a-zA-Z]+/))) {
-      result=input.match(/[a-zA-Z]+/).join()
+      if (input.match(/[a-zA-Z]+/).join('')==='l') {
+        result='L'
+      }
+      else if (input.match(/[a-zA-Z]+/).join('')==='L'){
+        result='L'
+      }
+        
+      else result=input.match(/[a-zA-Z]+/).join('').toLowerCase();
+      }
+      console.log(result)
+      return result;
     }
-    return result;
-  };
+
   
   this.getReturnUnit = function(initUnit) {
-    initUnit=initUnit.toLowerCase();
+    
     let result;
     switch (initUnit){
       case 'gal':
         result='L';
         break;
-      case 'l':
+      case 'L':
         result='gal';
         break;
       case 'km':
@@ -90,7 +100,7 @@ function ConvertHandler() {
       case 'gal':
         result=initNum*galToL;
         break;
-      case 'l':
+      case 'L':
         result=initNum/galToL;
         break;
       case 'km':
@@ -109,7 +119,7 @@ function ConvertHandler() {
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     
-    let result = initNum+' '+this.spellOutUnit(initUnit)+' converts to '+returnNum+' '+this.spellOutUnit('km')
+    let result = initNum+' '+this.spellOutUnit(initUnit)+' converts to '+returnNum+' '+this.spellOutUnit(returnUnit)
     
     
 
