@@ -2,9 +2,19 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     let result;
+    
     if (Array.isArray(input.match(/\d+[+-/*]*/g))) {
-      console.log(input.match(/\d+[+-/*]*/g).join(''))
+      if (input.match(/[/]/g) && input.match(/[/]/g).length>1) {
+        
+        result=null;
+      }
+       
+      
+      else
       result=eval(input.match(/\d+[+-/*]*/g).join(''))
+    }
+    else if (!input) {
+      result=1;
     }
     
     return result;
@@ -22,7 +32,7 @@ function ConvertHandler() {
         
       else result=input.match(/[a-zA-Z]+/).join('').toLowerCase();
       }
-      console.log(result)
+      
       return result;
     }
 
@@ -50,6 +60,7 @@ function ConvertHandler() {
         result='kg';
         break;
       default:
+        result=null;
         break;
     }
     return result;
