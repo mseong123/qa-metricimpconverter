@@ -4,16 +4,13 @@ function ConvertHandler() {
     let result;
     
     if (Array.isArray(input.match(/\d+[+-/*]*/g))) {
-      if (input.match(/[/]/g) && input.match(/[/]/g).length>1) {
-        
+      if (input.match(/[/]/g) && input.match(/[/]/g).length>1) { 
         result=null;
       }
-       
-      
       else
-      result=eval(input.match(/\d+[+-/*]*/g).join(''))
+        result=parseFloat(eval(input.match(/\d+[+-/*]*/g).join('')))
     }
-    else if (!input) {
+    else if (!input.match(/\d+[+-/*]*/g)) {
       result=1;
     }
     
@@ -100,7 +97,7 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     let result;
-
+    
     switch (initUnit){
       case 'lbs':
         result=initNum*lbsToKg;
@@ -125,7 +122,7 @@ function ConvertHandler() {
     }
 
     
-    return result.toFixed(5);
+    return parseFloat(result.toFixed(5));
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {

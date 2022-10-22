@@ -12,7 +12,7 @@ module.exports = function (app) {
     let initUnit=convertHandler.getUnit(input)
 
     if (!initNum && convertHandler.getReturnUnit(initUnit)) {
-      console.log('invalid number')
+      
       res.send('invalid number')
     }
     else if (!convertHandler.getReturnUnit(initUnit) && initNum) {
